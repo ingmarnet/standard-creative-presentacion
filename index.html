@@ -819,6 +819,33 @@
         to { opacity: 1; transform: translateY(0); }
       }
     }
+
+    /* Ejemplos reales (antes vs. después) — screenshots de anuncios de catálogo */
+    .badge.danger { background: rgba(255,123,114,.16); color: var(--danger); border: 1px solid rgba(255,123,114,.5); }
+    .proof {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 16px;
+    }
+    .proof-col { display: flex; flex-direction: column; align-items: center; }
+    .proof-arrow { align-self: center; font-size: 46px; font-weight: 800; color: var(--accent); padding-top: 150px; }
+    .proof-row { display: flex; gap: 18px; }
+    .proof-cap { font-size: 18px; color: var(--muted); margin-top: 16px; max-width: 340px; text-align: center; line-height: 1.5; }
+    .proof-cap b { color: var(--ink); font-weight: 750; }
+    .shot {
+      width: 258px;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: 0 20px 60px rgba(0,0,0,.45);
+      background: #0d1218;
+    }
+    .shot.antes { width: 286px; border-color: rgba(255,123,114,.5); }
+    .shot.rich { border-color: rgba(231,180,81,.45); }
+    .shot img { width: 100%; height: auto; display: block; }
+
   </style>
 </head>
 <body>
@@ -904,6 +931,31 @@
           </div>
         </div>
         <div class="speaker-note">Anclar esta slide en el concepto de Marpipe/Celtra: enriquecer el catálogo, no sólo diseñar banners.</div>
+      </section>
+
+
+      <section class="slide" data-title="Ejemplos reales">
+        <div class="topbar"><div class="brand"><div class="mark">SC</div> Standard Creative</div><div>04 · Ejemplos reales</div></div>
+        <div class="eyebrow">Del catálogo plano al anuncio que vende</div>
+        <h2 style="font-size:52px; margin:0 0 4px;">Así se ve la diferencia en el feed real.</h2>
+        <div class="proof">
+          <div class="proof-col">
+            <span class="badge danger">Antes · catálogo genérico</span>
+            <div class="shot antes" style="margin-top:16px;"><img src="assets/ad-antes-tradicional.jpg" alt="Anuncio de catálogo genérico: solo fotos de producto, sin marca ni precio"></div>
+            <div class="proof-cap">Foto y grilla, nada más. <b>Sin marca, sin precio, sin promo, sin envío</b> — el usuario no sabe por qué comprar acá.</div>
+          </div>
+          <div class="proof-arrow">→</div>
+          <div class="proof-col">
+            <span class="badge gold">Después · pieza enriquecida</span>
+            <div class="proof-row" style="margin-top:16px;">
+              <div class="shot rich"><img src="assets/ad-despues-metasports.jpg" alt="Anuncio enriquecido con marca, precio y branding"></div>
+              <div class="shot rich"><img src="assets/ad-despues-nissei.jpg" alt="Anuncio enriquecido con marca, precio, envíos a todo el país"></div>
+              <div class="shot rich"><img src="assets/ad-despues-renova.jpg" alt="Anuncio enriquecido con marca, precio y envíos"></div>
+            </div>
+            <div class="proof-cap" style="max-width:1000px;"><b>Marca, precio, promoción, cuotas y envío</b> en el mismo impacto visual — y cada SKU del catálogo sale con el mismo sistema.</div>
+          </div>
+        </div>
+        <div class="speaker-note">La última pieza (antes) es un anuncio de catálogo común: producto suelto, sin contexto comercial. Las tres de la derecha son el tipo de pieza enriquecida que entregamos — misma data del feed, convertida en creatividad con marca, precio, promo y envío. No es rediseñar a mano: una plantilla + reglas rinden todo el catálogo así.</div>
       </section>
 
       <section class="slide" data-title="Qué hace">
