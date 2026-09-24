@@ -1298,7 +1298,7 @@
     </nav>
   </div>
 
-  <script>
+    <script>
     const deck = document.getElementById('deck')
     const shell = document.getElementById('shell')
     const slides = Array.from(document.querySelectorAll('.slide'))
@@ -1307,25 +1307,34 @@
     let index = Number.parseInt(localStorage.getItem(key) || '0', 10)
     if (!Number.isFinite(index) || index < 0 || index >= slides.length) index = 0
 
+    const isMobile = () => window.innerWidth <= 768
+
     function fit () {
+      if (isMobile()) {
+        deck.style.transform = 'none'
+        return
+      }
       const w = window.innerWidth
       const h = window.innerHeight
-      if (h > w && w < 768) {
-        // En mobile portrait (pantalla vertical), rotar la presentación 90 grados
-        const scale = Math.min(w / 1080, h / 1920)
-        deck.style.transform = `translate(-50%, -50%) rotate(90deg) scale(${scale})`
-      } else {
-        const scale = Math.min(w / 1920, h / 1080)
-        deck.style.transform = `translate(-50%, -50%) scale(${scale})`
-      }
+      const scale = Math.min(w / 1920, h / 1080)
+      deck.style.transform = `translate(-50%, -50%) scale(${scale})`
     }
 
     function show (nextIndex) {
       index = Math.max(0, Math.min(slides.length - 1, nextIndex))
-      slides.forEach((slide, i) => slide.classList.toggle('active', i === index))
-      count.textContent = `${index + 1} / ${slides.length}`
-      localStorage.setItem(key, String(index))
-      document.title = `${slides[index].dataset.title || 'Slide'} · Standard Creative`
+      slides.forEach((slide, i) => {
+        if (isMobile()) {
+          slide.classList.add('active')
+        } else {
+          slide.classList.toggle('active', i === index)
+        }
+      })
+      
+      if (!isMobile()) {
+        count.textContent = `${index + 1} / ${slides.length}`
+        localStorage.setItem(key, String(index))
+        document.title = `${slides[index].dataset.title || 'Slide'} · Standard Creative`
+      }
     }
 
     function next () { show(index + 1) }
@@ -1339,8 +1348,12 @@
       else await document.exitFullscreen?.()
     })
 
-    window.addEventListener('resize', fit)
+    window.addEventListener('resize', () => {
+      fit()
+      show(index)
+    })
     window.addEventListener('keydown', (event) => {
+      if (isMobile()) return // No keyboard navigation on mobile flow
       if (['ArrowRight', 'PageDown', ' '].includes(event.key)) { event.preventDefault(); next() }
       if (['ArrowLeft', 'PageUp'].includes(event.key)) { event.preventDefault(); prev() }
       if (event.key === 'Home') show(0)
@@ -1352,5 +1365,6 @@
     fit()
     show(index)
   </script>
+
 </body>
 </html>
