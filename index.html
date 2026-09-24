@@ -1271,8 +1271,16 @@
     if (!Number.isFinite(index) || index < 0 || index >= slides.length) index = 0
 
     function fit () {
-      const scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080)
-      deck.style.transform = `translate(-50%, -50%) scale(${scale})`
+      const w = window.innerWidth
+      const h = window.innerHeight
+      if (h > w && w < 768) {
+        // En mobile portrait (pantalla vertical), rotar la presentación 90 grados
+        const scale = Math.min(w / 1080, h / 1920)
+        deck.style.transform = `translate(-50%, -50%) rotate(90deg) scale(${scale})`
+      } else {
+        const scale = Math.min(w / 1920, h / 1080)
+        deck.style.transform = `translate(-50%, -50%) scale(${scale})`
+      }
     }
 
     function show (nextIndex) {
