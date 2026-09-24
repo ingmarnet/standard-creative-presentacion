@@ -846,6 +846,43 @@
     .shot.rich { border-color: rgba(231,180,81,.45); }
     .shot img { width: 100%; height: auto; display: block; }
 
+    @media (max-width: 768px) {
+      html, body { height: auto !important; overflow: visible !important; }
+      body { display: block !important; padding: 0 !important; }
+      .deck-shell { position: relative !important; height: auto !important; width: 100% !important; background: none !important; }
+      .deck {
+        position: relative !important; width: 100% !important; height: auto !important;
+        transform: none !important; left: auto !important; top: auto !important;
+        border: none !important; box-shadow: none !important; background: none !important;
+      }
+      .slide {
+        display: block !important; position: relative !important;
+        width: 100% !important; height: auto !important;
+        padding: 40px 24px !important;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+      }
+      .controls { display: none !important; }
+      .grid-2, .grid-3, .grid-4, .plans, .rules-grid, .before-after, .proof-row {
+        grid-template-columns: 1fr !important;
+        flex-direction: column !important;
+        gap: 32px !important;
+      }
+      .flow { grid-template-columns: 1fr !important; }
+      h1 { font-size: 38px !important; line-height: 1.1 !important; }
+      h2 { font-size: 30px !important; line-height: 1.15 !important; }
+      h3 { font-size: 24px !important; }
+      .lead { font-size: 20px !important; }
+      .topbar { margin-bottom: 32px !important; flex-wrap: wrap; gap: 12px !important; font-size: 14px !important; }
+      .list-item { font-size: 18px !important; align-items: flex-start !important; }
+      .list-item .dot { margin-top: 8px !important; }
+      .panel { padding: 24px !important; border-radius: 16px !important; }
+      .speaker-note { display: block !important; position: relative !important; margin-top: 32px !important; bottom: auto !important; left: auto !important; right: auto !important; padding: 16px !important; font-size: 15px !important; border-radius: 8px !important; background: rgba(255,255,255,0.05) !important; border: none !important; color: #a9b1bb !important; opacity: 1 !important; transform: none !important; transition: none !important; }
+      .phone, .shot { width: 100% !important; max-width: 320px !important; margin: 0 auto !important; }
+      .addon-table { display: block !important; overflow-x: auto !important; white-space: nowrap !important; }
+      .addon-table th, .addon-table td { padding: 12px 16px !important; font-size: 16px !important; }
+      .sources-list a { font-size: 14px !important; }
+      .small { position: relative !important; bottom: auto !important; left: auto !important; right: auto !important; margin-top: 24px !important; }
+    }
   </style>
 </head>
 <body>
